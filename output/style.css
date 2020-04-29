@@ -1,0 +1,15 @@
+html {
+    font-size: 12pt;
+}
+.team-heading, .card-header {
+    background-color:darkblue;
+    color:white; 
+
+}
+
+.employee-card {
+    margin: 20px;
+    box-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+    background-color: lightgray;
+    color: grey;
+}

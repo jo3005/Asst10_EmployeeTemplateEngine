@@ -17,10 +17,10 @@ let team_default=
   [
     new Manager(
       name= 'Fred Boss',
-      id= 'fred@email.com',
-      email= '51',
+      id= '51',
+      email= 'fred@email.com',
       role= 'Manager',
-      officeNumber= '0892770900'
+      officeNumber= '892770900'
     ),
    new Engineer (
       name= 'Joe Engine',
@@ -45,7 +45,7 @@ let team_default=
     )
   ];
 
-console.log("Please build your team.");
+
 
 function getPersonData(){
     const doMore="No";
@@ -126,11 +126,11 @@ function getPersonData(){
         response.forEach(person => {
             switch(person.role){
                 case "Manager":
-                    const newManager= new Manager(person.name, person.email, person.id,person.officeNumber);
+                    const newManager= new Manager(person.name, person.id, person.email, person.officeNumber);
                     persons.push(newManager);
                     break;
                 case "Engineer":
-                    const newEngineer = new Engineer(person.name, person.email,person.id, person.github);
+                    const newEngineer = new Engineer(person.name, person.id, person.email, person.github);
                     persons.push(newEngineer);
                     break;
                 case "Intern":
@@ -149,15 +149,13 @@ function getPersonData(){
     })
     .then(team_members => {
         
-        if(team_members!==undefined){
+        if(team_members === undefined){
             return;
         }
-        if (!fs.existsSync(OUTPUT_DIR)) {
-            fs.mkdirSync(OUTPUT_DIR)
-          }
-        fs.writeFileSync(outputPath, render(team), "utf-8");
+        fs.writeFileSync(outputPath, render(team_members), "utf-8");
     });   
 }
-//getPersonData();
-fs.writeFileSync(outputPath, render(team_default), "utf-8");
+console.log("Please build your team.");
+getPersonData();
+//fs.writeFileSync(outputPath, render(team_default), "utf-8");
 
